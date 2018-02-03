@@ -4,4 +4,8 @@
     <string name="crime_title_label">Title</string>
     <string name="crime_details_label">Details</string>
     <string name="crime_solved_label">Solved</string>
+
+    <!-- Crime Item List -->
+    <string name="crime_list_crime_title">Crime Title</string>
+    <string name="crime_list_crime_date">Crime Date</string>
 </resources>
