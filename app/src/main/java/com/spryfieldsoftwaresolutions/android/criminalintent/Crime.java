@@ -1,5 +1,7 @@
 package com.spryfieldsoftwaresolutions.android.criminalintent;
 
+
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
@@ -33,8 +35,8 @@ public class Crime {
         mTitle = title;
     }
 
-    public Date getDate() {
-        return mDate;
+    public String getDate() {
+        return formatDate(mDate);
     }
 
     public void setDate(Date date) {
@@ -55,6 +57,15 @@ public class Crime {
 
     public void setRequiresPolice(boolean requiresPolice) {
         mRequiresPolice = requiresPolice;
+    }
+
+    private String formatDate(Date date) {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("EEEE, MMM d, yyyy");
+        String formattedDate = sdf.format(date);
+
+        return formattedDate;
+
     }
 }
 
