@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,7 +23,7 @@ import java.util.List;
 public class CrimeListFragment extends Fragment {
     private RecyclerView mCrimeRecyclerView;
     private CrimeAdapter mAdapter;
-    private int mLastPositionUpdated = -1;
+    //private ArrayList<Integer> mLastPositionUpdated = new ArrayList<>();
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -50,13 +51,13 @@ public class CrimeListFragment extends Fragment {
             mAdapter = new CrimeAdapter(crimes);
             mCrimeRecyclerView.setAdapter(mAdapter);
         } else {
-            if (mLastPositionUpdated > -1) {
-                mAdapter.notifyItemChanged(mLastPositionUpdated);
-                Log.d("CRIME_LIST_FRAGMENT", "Updated position: " + mLastPositionUpdated);
-                mLastPositionUpdated = -1;
-            } else {
+            //if (mLastPositionUpdated > -1) {
+            //    mAdapter.notifyItemChanged(mLastPositionUpdated);
+            //    Log.d("CRIME_LIST_FRAGMENT", "Updated position: " + mLastPositionUpdated);
+            //    mLastPositionUpdated = -1;
+            // } else {
                 mAdapter.notifyDataSetChanged();
-            }
+            //}
         }
     }
 
@@ -93,7 +94,11 @@ public class CrimeListFragment extends Fragment {
         @Override
         public void onClick(View view) {
             Intent intent = CrimePagerActivity.newIntent(getActivity(), mCrime.getId());
-            mLastPositionUpdated = this.getAdapterPosition();
+            /** Log.d("ADAPTOR POSITION", "#" + this.getAdapterPosition());
+             mLastPositionUpdated.add(this.getAdapterPosition());
+             for(int i=0;i<mLastPositionUpdated.size()-1;i++){
+             Log.d("LAST_POSITION_UPDATED", mLastPositionUpdated.get(i).toString() );
+             }**/
             startActivity(intent);
         }
 
