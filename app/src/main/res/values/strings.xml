@@ -10,5 +10,9 @@
     <string name="crime_list_crime_date">Crime Date</string>
     <string name="crime_list_call_police">Call Police!</string>
     <string name="crime_list_solved_crime_image">Solved!</string>
+
+    <!-- Activity Crime Pager -->
+    <string name="first_crime_button">First Crime</string>
+    <string name="last_crime_button">Last Crime</string>
 </resources>
 
