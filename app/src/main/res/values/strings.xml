@@ -14,5 +14,8 @@
     <!-- Activity Crime Pager -->
     <string name="first_crime_button">First Crime</string>
     <string name="last_crime_button">Last Crime</string>
+
+    <!-- Date Picker Dialog -->
+    <string name="date_picker_title">Date of crime:</string>
 </resources>
 
