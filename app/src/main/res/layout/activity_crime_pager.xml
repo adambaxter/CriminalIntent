@@ -4,4 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <Button
+        android:id="@+id/crime_pager_first_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="First Page" />
+
+    <Button
+        android:id="@+id/crime_pager_last_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Last Page" />
 </android.support.v4.view.ViewPager>

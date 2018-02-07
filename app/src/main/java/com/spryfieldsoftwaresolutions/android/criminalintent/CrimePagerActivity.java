@@ -8,6 +8,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 
 import java.util.List;
 import java.util.UUID;
@@ -22,6 +24,8 @@ public class CrimePagerActivity extends AppCompatActivity {
             "com.spryfieldsoftwaresolutions.android.criminalintent.crime_id";
 
     private ViewPager mViewPager;
+    private Button mFirstCrimeButton;
+    private Button mLastCrimeButton;
     private List<Crime> mCrimes;
 
     public static Intent newIntent(Context packageContext, UUID crimeId) {
@@ -38,6 +42,38 @@ public class CrimePagerActivity extends AppCompatActivity {
         UUID crimeId = (UUID) getIntent().getSerializableExtra(EXTRA_CRIME_ID);
 
         mViewPager = findViewById(R.id.crime_view_pager);
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                mFirstCrimeButton.setEnabled(position != 0);
+                mLastCrimeButton.setEnabled(position != (mCrimes.size() - 1));
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+        mFirstCrimeButton = findViewById(R.id.crime_pager_first_button);
+        mFirstCrimeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mViewPager.setCurrentItem(0);
+            }
+        });
+
+        mLastCrimeButton = findViewById(R.id.crime_pager_last_button);
+        mLastCrimeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mViewPager.setCurrentItem(mCrimes.size() - 1);
+            }
+        });
 
         mCrimes = CrimeLab.get(this).getCrimes();
         FragmentManager fragmentManager = getSupportFragmentManager();
