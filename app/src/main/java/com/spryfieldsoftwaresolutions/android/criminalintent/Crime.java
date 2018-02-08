@@ -98,6 +98,11 @@ public class Crime {
 
     private String formatTime(Date date) {
         SimpleDateFormat sdf = new SimpleDateFormat("h:mm a");
+        SimpleDateFormat hour = new SimpleDateFormat("h");
+        SimpleDateFormat min = new SimpleDateFormat("mm");
+
+        setHours(Integer.parseInt(hour.format(date)));
+        setMins(Integer.parseInt(min.format(date)));
 
         return sdf.format(date);
     }
