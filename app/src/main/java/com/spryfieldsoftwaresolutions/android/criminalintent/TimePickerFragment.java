@@ -6,6 +6,7 @@ import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.TimePicker;
 
 /**
  * Created by slim on 07/02/18.
@@ -14,6 +15,19 @@ import android.view.View;
  */
 
 public class TimePickerFragment extends DialogFragment {
+    private static final String ARG_TIME = "time";
+
+    private TimePicker mTimePicker;
+
+    public static TimePickerFragment newInstance(String time) {
+        Bundle args = new Bundle();
+        args.putSerializable(ARG_TIME, time);
+
+        TimePickerFragment fragment = new TimePickerFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         View v = LayoutInflater.from(getActivity())
