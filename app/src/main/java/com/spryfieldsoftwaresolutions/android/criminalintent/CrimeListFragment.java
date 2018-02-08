@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -79,7 +78,6 @@ public class CrimeListFragment extends Fragment {
 
         public void bind(Crime crime) {
             mCrime = crime;
-            mCrime.setTime();
             mTitleTextView.setText(mCrime.getTitle());
             String dateAndTimeString = getString(R.string.crime_list_date_time_string, mCrime.getDate(), mCrime.getTime());
             mDateTextView.setText(dateAndTimeString);
