@@ -17,5 +17,8 @@
 
     <!-- Date Picker Dialog -->
     <string name="date_picker_title">Date of crime:</string>
+
+    <!-- Time Picker Dialog -->
+    <string name="time_picker_title">Time of crime:</string>
 </resources>
 
