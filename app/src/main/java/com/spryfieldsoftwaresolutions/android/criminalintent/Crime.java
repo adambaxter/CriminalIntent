@@ -14,6 +14,9 @@ public class Crime {
     private UUID mId;
     private String mTitle;
     private Date mDate;
+    private String mTime;
+    private int mHours;
+    private int mMins;
     private boolean mSolved;
     private boolean mRequiresPolice;
 
@@ -44,6 +47,30 @@ public class Crime {
     }
     public void setDate(Date date) {
         mDate = date;
+    }
+
+    public void setTime(int hours, int mins) {
+        mTime = hours + ":" + mins;
+    }
+
+    public String getTime() {
+        return mTime;
+    }
+
+    public void setHours(int hours) {
+        mHours = hours;
+    }
+
+    public int getHours() {
+        return mHours;
+    }
+
+    public void setMins(int mins) {
+        mMins = mins;
+    }
+
+    public int getMins() {
+        return mMins;
     }
 
     public boolean isSolved() {
