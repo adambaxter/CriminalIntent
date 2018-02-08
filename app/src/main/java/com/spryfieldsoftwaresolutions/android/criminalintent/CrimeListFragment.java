@@ -81,7 +81,8 @@ public class CrimeListFragment extends Fragment {
             mCrime = crime;
             mCrime.setTime();
             mTitleTextView.setText(mCrime.getTitle());
-            mDateTextView.setText(mCrime.getDate() + " at " + mCrime.getTime());
+            String dateAndTimeString = getString(R.string.crime_list_date_time_string, mCrime.getDate(), mCrime.getTime());
+            mDateTextView.setText(dateAndTimeString);
             if (!mCrime.isRequiresPolice()) {
                 mSolvedImageView.setVisibility(mCrime.isSolved() ? View.VISIBLE : View.INVISIBLE);
             }
