@@ -80,7 +80,7 @@ public class CrimeListFragment extends Fragment {
         public void bind(Crime crime) {
             mCrime = crime;
             mTitleTextView.setText(mCrime.getTitle());
-            mDateTextView.setText(mCrime.getDate());
+            mDateTextView.setText(mCrime.getDate() + " at " + mCrime.getTime());
             if (!mCrime.isRequiresPolice()) {
                 mSolvedImageView.setVisibility(mCrime.isSolved() ? View.VISIBLE : View.INVISIBLE);
             }
