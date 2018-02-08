@@ -79,6 +79,7 @@ public class CrimeListFragment extends Fragment {
 
         public void bind(Crime crime) {
             mCrime = crime;
+            mCrime.setTime();
             mTitleTextView.setText(mCrime.getTitle());
             mDateTextView.setText(mCrime.getDate() + " at " + mCrime.getTime());
             if (!mCrime.isRequiresPolice()) {
