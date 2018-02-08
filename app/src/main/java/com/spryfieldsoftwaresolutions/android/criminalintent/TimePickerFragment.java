@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TimePicker;
 
+import java.lang.reflect.Array;
+
 /**
  * Created by slim on 07/02/18.
  * <p>
@@ -19,8 +21,9 @@ public class TimePickerFragment extends DialogFragment {
 
     private TimePicker mTimePicker;
 
-    public static TimePickerFragment newInstance(String time) {
+    public static TimePickerFragment newInstance(int hours, int mins) {
         Bundle args = new Bundle();
+        int[] time = {hours, mins};
         args.putSerializable(ARG_TIME, time);
 
         TimePickerFragment fragment = new TimePickerFragment();
