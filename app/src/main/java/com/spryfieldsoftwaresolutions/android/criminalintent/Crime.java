@@ -116,6 +116,7 @@ public class Crime {
 
     public String convertTime(int hour, int min) {
         String hours = "";
+        String mins = "";
         Boolean AM = false;
 
         if (hour == 0) {
@@ -134,10 +135,16 @@ public class Crime {
             hours = String.valueOf(hour - 12);
         }
 
-        if (AM) {
-            return hours + ":" + min + " AM";
+        if (min < 10) {
+            mins = "0" + min;
         } else {
-            return hours + ":" + min + " PM";
+            mins = String.valueOf(min);
+        }
+
+        if (AM) {
+            return hours + ":" + mins + " AM";
+        } else {
+            return hours + ":" + mins + " PM";
         }
     }
 }
