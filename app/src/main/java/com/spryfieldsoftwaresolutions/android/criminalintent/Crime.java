@@ -39,6 +39,9 @@ public class Crime {
         return formatDate(mDate);
     }
 
+    public Date getUnformattedDate() {
+        return mDate;
+    }
     public void setDate(Date date) {
         mDate = date;
     }
