@@ -140,6 +140,8 @@ public class CrimeFragment extends Fragment{
             updateDate();
         } else if (requestCode == REQUEST_TIME) {
             int[] time = (int[]) data.getSerializableExtra(TimePickerFragment.EXTRA_TIME);
+            mCrime.setTimeFromInts(time[0], time[1]);
+            mTimeButton.setText(mCrime.getTime());
 
         }
 
