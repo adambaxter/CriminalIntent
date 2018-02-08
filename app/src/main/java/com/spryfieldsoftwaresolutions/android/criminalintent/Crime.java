@@ -53,7 +53,7 @@ public class Crime {
     }
 
     public void setTime() {
-        mTime = formatTime(mDate);
+        mTime = formatTime(new Date());
     }
 
     public void setTimeFromInts(int hour, int min) {
