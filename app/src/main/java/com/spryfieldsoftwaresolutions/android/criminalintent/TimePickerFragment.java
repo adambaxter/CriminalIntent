@@ -1,6 +1,7 @@
 package com.spryfieldsoftwaresolutions.android.criminalintent;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
@@ -17,6 +18,9 @@ import java.lang.reflect.Array;
  */
 
 public class TimePickerFragment extends DialogFragment {
+    public static final String EXTRA_TIME =
+            "com.spryfieldsoftwaresolutions.android.criminalintent.time";
+
     private static final String ARG_TIME = "time";
 
     private TimePicker mTimePicker;
@@ -46,6 +50,17 @@ public class TimePickerFragment extends DialogFragment {
                 .setTitle(R.string.time_picker_title)
                 .setPositiveButton(android.R.string.ok, null)
                 .create();
+    }
+
+    private void sendResult(int resultCode, String time) {
+        if (getTargetFragment() == null) {
+            return;
+        }
+        Intent intent = new Intent();
+        intent.putExtra(EXTRA_TIME, time);
+
+        getTargetFragment()
+                .onActivityResult(getTargetRequestCode(), resultCode, intent);
     }
 
 }
