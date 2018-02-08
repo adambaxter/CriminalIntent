@@ -38,6 +38,7 @@ public class CrimeFragment extends Fragment{
     private static final String DIALOG_TIME = "DialogTime";
 
     private static final int REQUEST_DATE = 0;
+    private static final int REQUEST_TIME = 0;
 
     public static CrimeFragment newInstance(UUID crimeId) {
         Bundle args = new Bundle();
@@ -106,6 +107,7 @@ public class CrimeFragment extends Fragment{
                 FragmentManager manager = getFragmentManager();
                 TimePickerFragment dialog = TimePickerFragment
                         .newInstance(mCrime.getHours(), mCrime.getMins());
+                dialog.setTargetFragment(CrimeFragment.this, REQUEST_TIME);
                 dialog.show(manager, DIALOG_TIME);
             }
         });
@@ -136,7 +138,12 @@ public class CrimeFragment extends Fragment{
                     .getSerializableExtra(DatePickerFragment.EXTRA_DATE);
             mCrime.setDate(date);
             updateDate();
+        } else if (requestCode == REQUEST_TIME) {
+            int[] time = (int[]) data.getSerializableExtra(TimePickerFragment.EXTRA_TIME);
+
         }
+
+
     }
 
     private void updateDate() {

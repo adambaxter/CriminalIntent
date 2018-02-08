@@ -8,6 +8,8 @@ import java.util.UUID;
 
 /**
  * Created by slim on 02/02/18.
+ *
+ * Crime Object that holds all information about a crime.
  */
 
 public class Crime {
@@ -114,7 +116,7 @@ public class Crime {
 
     public String convertTime(int hour, int min) {
         String hours = "";
-        Boolean AM;
+        Boolean AM = false;
 
         if (hour == 0) {
             AM = true;
@@ -132,7 +134,7 @@ public class Crime {
             hours = String.valueOf(hour - 12);
         }
 
-        if (AM = true) {
+        if (AM) {
             return hours + ":" + min + " AM";
         } else {
             return hours + ":" + min + " PM";
