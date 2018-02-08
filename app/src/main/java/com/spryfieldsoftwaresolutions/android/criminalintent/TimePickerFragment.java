@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TimePicker;
@@ -57,6 +58,7 @@ public class TimePickerFragment extends DialogFragment {
                                 int hours = mTimePicker.getCurrentHour();
                                 int mins = mTimePicker.getCurrentMinute();
                                 int[] time = {hours, mins};
+                                Log.d("TIME []", "time[0]: " + time[0] + "\ntime[1]: " + time[1]);
                                 sendResult(Activity.RESULT_OK, time);
                             }
                         })
