@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,7 +39,7 @@ public class CrimeFragment extends Fragment{
     private static final String DIALOG_TIME = "DialogTime";
 
     private static final int REQUEST_DATE = 0;
-    private static final int REQUEST_TIME = 0;
+    private static final int REQUEST_TIME = 1;
 
     public static CrimeFragment newInstance(UUID crimeId) {
         Bundle args = new Bundle();
@@ -132,7 +133,7 @@ public class CrimeFragment extends Fragment{
         if (resultCode != Activity.RESULT_OK) {
             return;
         }
-
+        Log.d("REQUEST_CODE", "Request Code: " + requestCode);
         if (requestCode == REQUEST_DATE) {
             Date date = (Date) data
                     .getSerializableExtra(DatePickerFragment.EXTRA_DATE);
@@ -141,6 +142,7 @@ public class CrimeFragment extends Fragment{
         } else if (requestCode == REQUEST_TIME) {
             int[] time = (int[]) data.getSerializableExtra(TimePickerFragment.EXTRA_TIME);
             mCrime.setTimeFromInts(time[0], time[1]);
+            Log.d("REQUEST_TIME", "Time: {" + time[0] + ", " + time[1] + "}");
             mTimeButton.setText(mCrime.getTime());
 
         }
