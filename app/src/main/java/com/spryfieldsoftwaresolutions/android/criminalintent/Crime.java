@@ -49,8 +49,8 @@ public class Crime {
         mDate = date;
     }
 
-    public void setTime(Date date) {
-        mTime = formatTime(date);
+    public void setTime() {
+        mTime = formatTime(mDate);
     }
 
     public String getTime() {
