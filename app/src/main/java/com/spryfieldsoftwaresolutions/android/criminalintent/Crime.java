@@ -54,6 +54,10 @@ public class Crime {
         mTime = formatTime(mDate);
     }
 
+    public void setTimeFromInts(int hour, int min) {
+        mTime = convertTime(hour, min);
+    }
+
     public String getTime() {
         return mTime;
     }
@@ -106,6 +110,33 @@ public class Crime {
         setMins(Integer.parseInt(min.format(date)));
 
         return sdf.format(date);
+    }
+
+    public String convertTime(int hour, int min) {
+        String hours = "";
+        Boolean AM;
+
+        if (hour == 0) {
+            AM = true;
+            hours = "12";
+
+        } else if (hour >= 1 && hour <= 11) {
+            hours = String.valueOf(hour);
+            AM = true;
+
+        } else if (hour == 12) {
+            hours = String.valueOf(hour);
+            AM = false;
+
+        } else if (hour > 12) {
+            hours = String.valueOf(hour - 12);
+        }
+
+        if (AM = true) {
+            return hours + ":" + min + " AM";
+        } else {
+            return hours + ":" + min + " PM";
+        }
     }
 }
 
