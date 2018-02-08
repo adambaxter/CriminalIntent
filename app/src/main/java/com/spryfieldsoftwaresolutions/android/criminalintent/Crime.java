@@ -3,6 +3,7 @@ package com.spryfieldsoftwaresolutions.android.criminalintent;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 import java.util.UUID;
 
 /**
@@ -90,16 +91,16 @@ public class Crime {
     }
 
     private String formatDate(Date date) {
-        SimpleDateFormat sdf = new SimpleDateFormat("EEEE, MMM d, yyyy");
+        SimpleDateFormat sdf = new SimpleDateFormat("EEEE, MMM d, yyyy", Locale.CANADA);
 
         return sdf.format(date);
 
     }
 
     private String formatTime(Date date) {
-        SimpleDateFormat sdf = new SimpleDateFormat("h:mm a");
-        SimpleDateFormat hour = new SimpleDateFormat("h");
-        SimpleDateFormat min = new SimpleDateFormat("mm");
+        SimpleDateFormat sdf = new SimpleDateFormat("h:mm a", Locale.CANADA);
+        SimpleDateFormat hour = new SimpleDateFormat("h", Locale.CANADA);
+        SimpleDateFormat min = new SimpleDateFormat("mm", Locale.CANADA);
 
         setHours(Integer.parseInt(hour.format(date)));
         setMins(Integer.parseInt(min.format(date)));
