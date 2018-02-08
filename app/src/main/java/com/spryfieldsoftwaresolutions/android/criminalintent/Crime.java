@@ -90,12 +90,16 @@ public class Crime {
     }
 
     private String formatDate(Date date) {
-
         SimpleDateFormat sdf = new SimpleDateFormat("EEEE, MMM d, yyyy");
-        String formattedDate = sdf.format(date);
 
-        return formattedDate;
+        return sdf.format(date);
 
+    }
+
+    private String formatTime(Date date) {
+        SimpleDateFormat sdf = new SimpleDateFormat("h:mm a");
+
+        return sdf.format(date);
     }
 }
 
