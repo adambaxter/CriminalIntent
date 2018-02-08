@@ -10,6 +10,7 @@
     <string name="crime_list_crime_date">Crime Date</string>
     <string name="crime_list_call_police">Call Police!</string>
     <string name="crime_list_solved_crime_image">Solved!</string>
+    <string name="crime_list_date_time_string">%1s at %2s</string>
 
     <!-- Activity Crime Pager -->
     <string name="first_crime_button">First Crime</string>
