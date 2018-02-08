@@ -30,10 +30,12 @@ public class CrimeFragment extends Fragment{
     private Crime mCrime;
     private EditText mTitleField;
     private Button mDateButton;
+    private Button mTimeButton;
     private CheckBox mSolvedCheckBox;
 
     private static final String ARG_CRIME_ID = "crime_id";
     private static final String DIALOG_DATE = "DialogDate";
+    private static final String DIALOG_TIME = "DialogTime";
 
     private static final int REQUEST_DATE = 0;
 
@@ -94,6 +96,19 @@ public class CrimeFragment extends Fragment{
 
             }
         });
+
+        mTimeButton = v.findViewById(R.id.crime_time);
+        mTimeButton.setText(mCrime.getTime());
+        mTimeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager manager = getFragmentManager();
+                TimePickerFragment dialog = new TimePickerFragment();
+                dialog.show(manager, DIALOG_TIME);
+            }
+        });
+
+
 
         mSolvedCheckBox = v.findViewById(R.id.crime_solved);
         mSolvedCheckBox.setChecked(mCrime.isSolved());
