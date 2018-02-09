@@ -133,7 +133,7 @@ public class CrimeFragment extends Fragment{
         if (resultCode != Activity.RESULT_OK) {
             return;
         }
-        Log.d("REQUEST_CODE", "Request Code: " + requestCode);
+
         if (requestCode == REQUEST_DATE) {
             Date date = (Date) data
                     .getSerializableExtra(DatePickerFragment.EXTRA_DATE);
@@ -142,7 +142,6 @@ public class CrimeFragment extends Fragment{
         } else if (requestCode == REQUEST_TIME) {
             int[] time = (int[]) data.getSerializableExtra(TimePickerFragment.EXTRA_TIME);
             mCrime.setTimeFromInts(time[0], time[1]);
-            Log.d("REQUEST_TIME", "Time: {" + time[0] + ", " + time[1] + "}");
             mTimeButton.setText(mCrime.getTime());
 
         }
