@@ -30,6 +30,7 @@ public class CrimeLab {
             Crime crime = new Crime();
             crime.setTitle("Crime #" + i);
             crime.setSolved(i % 3 == 0);
+            crime.setTime();
             //crime.setRequiresPolice(i % 2 == 1);
             mCrimes.put(crime.getId(), crime);
         }
