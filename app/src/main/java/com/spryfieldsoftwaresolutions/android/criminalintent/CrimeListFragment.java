@@ -86,7 +86,7 @@ public class CrimeListFragment extends Fragment {
             //    mLastPositionUpdated = -1;
             // } else {
             mAdapter.replaceList(crimes);
-                mAdapter.notifyDataSetChanged();
+            mAdapter.notifyDataSetChanged();
             //}
         }
     }

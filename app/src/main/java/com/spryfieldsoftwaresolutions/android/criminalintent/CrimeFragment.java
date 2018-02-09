@@ -100,7 +100,9 @@ public class CrimeFragment extends Fragment{
         });
 
         mTimeButton = v.findViewById(R.id.crime_time);
-        mCrime.setTime();
+        if (mCrime.getTime() == null) {
+            mCrime.setTime();
+        }
         mTimeButton.setText(mCrime.getTime());
         mTimeButton.setOnClickListener(new View.OnClickListener() {
             @Override
