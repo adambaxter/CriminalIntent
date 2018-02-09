@@ -6,7 +6,6 @@
     <string name="crime_title_label">Title</string>
     <string name="crime_details_label">Details</string>
     <string name="crime_solved_label">Solved</string>
-    <string name="delete_button">Delete Crime</string>
 
     <!-- Crime Item List Strings -->
     <string name="crime_list_crime_title">Crime Title</string>
@@ -30,5 +29,6 @@
     <string name="show_subtitle">Show Subtitle</string>
     <string name="hide_subtitle">Hide Subtitle</string>
     <string name="subtitle_format">%1$d</string>
+    <string name="delete_button">Delete Crime</string>
 </resources>
 
