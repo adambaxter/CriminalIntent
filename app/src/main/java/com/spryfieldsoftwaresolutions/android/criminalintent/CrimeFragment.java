@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.Date;
 import java.util.UUID;
@@ -33,6 +34,8 @@ public class CrimeFragment extends Fragment{
     private Button mDateButton;
     private Button mTimeButton;
     private CheckBox mSolvedCheckBox;
+    private Button mDeleteCrimeButton;
+
 
     private static final String ARG_CRIME_ID = "crime_id";
     private static final String DIALOG_DATE = "DialogDate";
@@ -127,6 +130,14 @@ public class CrimeFragment extends Fragment{
             }
         });
 
+        mDeleteCrimeButton = v.findViewById(R.id.delete_button);
+        mDeleteCrimeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast deleteToast = Toast.makeText(getActivity(), "Delete Crime Toast", Toast.LENGTH_SHORT);
+                deleteToast.show();
+            }
+        });
         return v;
     }
 
