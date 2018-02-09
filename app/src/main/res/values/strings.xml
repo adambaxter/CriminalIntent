@@ -1,25 +1,28 @@
 <resources>
     <string name="app_name">CriminalIntent</string>
+
+    <!-- Crime Fragment Strings -->
     <string name="crime_title_hint">Enter a title for the crime.</string>
     <string name="crime_title_label">Title</string>
     <string name="crime_details_label">Details</string>
     <string name="crime_solved_label">Solved</string>
+    <string name="delete_button">Delete Crime</string>
 
-    <!-- Crime Item List -->
+    <!-- Crime Item List Strings -->
     <string name="crime_list_crime_title">Crime Title</string>
     <string name="crime_list_crime_date">Crime Date</string>
     <string name="crime_list_call_police">Call Police!</string>
     <string name="crime_list_solved_crime_image">Solved!</string>
     <string name="crime_list_date_time_string">%1$s at %2$s</string>
 
-    <!-- Activity Crime Pager -->
+    <!-- Activity Crime Pager Strings -->
     <string name="first_crime_button">First Crime</string>
     <string name="last_crime_button">Last Crime</string>
 
-    <!-- Date Picker Dialog -->
+    <!-- Date Picker Dialog Strings -->
     <string name="date_picker_title">Date of crime:</string>
 
-    <!-- Time Picker Dialog -->
+    <!-- Time Picker Dialog Strings -->
     <string name="time_picker_title">Time of crime:</string>
 
     <!-- Menu Strings -->
