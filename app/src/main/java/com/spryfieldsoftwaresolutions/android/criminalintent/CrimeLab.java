@@ -40,5 +40,8 @@ public class CrimeLab {
         return mCrimes.get(id);
     }
 
+    public void removeCrime(UUID id) {
+        mCrimes.remove(id);
+    }
 
 }
