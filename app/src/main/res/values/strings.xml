@@ -30,6 +30,10 @@
     <string name="hide_subtitle">Hide Subtitle</string>
     <string name="subtitle_format">%1$d</string>
     <string name="delete_button">Delete Crime</string>
+    <plurals name="subtitle_plural">
+        <item quantity="one">%1$d Crime</item>
+        <item quantity="other">%1$d Crimes</item>
+    </plurals>
 
     <!-- Delete Crime Dialog -->
     <string name="delete_crime_title">Delete Crime?</string>
