@@ -1,6 +1,7 @@
 package com.spryfieldsoftwaresolutions.android.criminalintent;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -11,6 +12,9 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -28,7 +32,7 @@ import static android.widget.CompoundButton.*;
  * Created by slim on 02/02/18.
  */
 
-public class CrimeFragment extends Fragment{
+public class CrimeFragment extends Fragment {
     private Crime mCrime;
     private EditText mTitleField;
     private Button mDateButton;
@@ -40,6 +44,7 @@ public class CrimeFragment extends Fragment{
     private static final String ARG_CRIME_ID = "crime_id";
     private static final String DIALOG_DATE = "DialogDate";
     private static final String DIALOG_TIME = "DialogTime";
+    private static final String DIALOG_DELETE = "DialogDeleteCrime";
 
     private static final int REQUEST_DATE = 0;
     private static final int REQUEST_TIME = 1;
@@ -55,10 +60,11 @@ public class CrimeFragment extends Fragment{
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState){
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         UUID crimeId = (UUID) getArguments().getSerializable(ARG_CRIME_ID);
         mCrime = CrimeLab.get(getActivity()).getCrime(crimeId);
+        setHasOptionsMenu(true);
     }
 
 
@@ -68,21 +74,21 @@ public class CrimeFragment extends Fragment{
 
         mTitleField = v.findViewById(R.id.crime_title);
         mTitleField.setText(mCrime.getTitle());
-        mTitleField.addTextChangedListener(new TextWatcher(){
+        mTitleField.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(
-                    CharSequence s, int start, int count, int after){
+                    CharSequence s, int start, int count, int after) {
 
             }
 
             @Override
             public void onTextChanged(
-                    CharSequence s, int start, int before, int count){
-                        mCrime.setTitle(s.toString());
+                    CharSequence s, int start, int before, int count) {
+                mCrime.setTitle(s.toString());
             }
 
             @Override
-            public void afterTextChanged(Editable s){
+            public void afterTextChanged(Editable s) {
 
             }
 
@@ -119,25 +125,16 @@ public class CrimeFragment extends Fragment{
         });
 
 
-
         mSolvedCheckBox = v.findViewById(R.id.crime_solved);
         mSolvedCheckBox.setChecked(mCrime.isSolved());
-        mSolvedCheckBox.setOnCheckedChangeListener(new OnCheckedChangeListener(){
+        mSolvedCheckBox.setOnCheckedChangeListener(new OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView,
-                                                  boolean isChecked){
+                                         boolean isChecked) {
                 mCrime.setSolved(isChecked);
             }
         });
 
-        mDeleteCrimeButton = v.findViewById(R.id.delete_button);
-        mDeleteCrimeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast deleteToast = Toast.makeText(getActivity(), "Delete Crime Toast", Toast.LENGTH_SHORT);
-                deleteToast.show();
-            }
-        });
         return v;
     }
 
@@ -160,6 +157,26 @@ public class CrimeFragment extends Fragment{
         }
 
 
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.fragment_crime, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.delete_crime:
+                FragmentManager manager = getFragmentManager();
+                DeleteCrimeFragment dialog = DeleteCrimeFragment
+                        .newInstance(mCrime.getId());
+                dialog.show(manager, DIALOG_DELETE);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     private void updateDate() {
