@@ -34,5 +34,7 @@
     <!-- Delete Crime Dialog -->
     <string name="delete_crime_title">Delete Crime?</string>
     <string name="delete_crime_messsage">Crime will be lost forever. Are you sure you want to delete it?</string>
+    <string name="delete_crime_positive_button">Delete</string>
+    <string name="delete_crime_negative_button">Cancel</string>
 </resources>
 
