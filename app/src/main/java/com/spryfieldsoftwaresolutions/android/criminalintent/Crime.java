@@ -59,10 +59,9 @@ public class Crime {
 
     public void setDate(Date date) {
         mDate = date;
-        Log.d("SETDATE 1", "Date: " + mDate);
     }
 
-    public void setTime() {  /***** GETTING SET AS DEC 31, 1969 ***/
+    public void setTime() {
         Date date = new Date();
         setTime(date);
     }
@@ -120,56 +119,5 @@ public class Crime {
         mRequiresPolice = requiresPolice;
     }
 
-    /**   private String formatDate(Date date) {
-     SimpleDateFormat sdf = new SimpleDateFormat("EEEE, MMM d, yyyy", Locale.CANADA);
-
-     return sdf.format(date);
-
-     }
-
-     private String formatTime(Date date) {
-     SimpleDateFormat sdf = new SimpleDateFormat("h:mm a", Locale.CANADA);
-     SimpleDateFormat hour = new SimpleDateFormat("h", Locale.CANADA);
-     SimpleDateFormat min = new SimpleDateFormat("mm", Locale.CANADA);
-
-     setHours(Integer.parseInt(hour.format(date)));
-     setMins(Integer.parseInt(min.format(date)));
-
-     return sdf.format(date);
-     }
-
-     public String convertTime(int hour, int min) {
-     String hours = "";
-     String mins = "";
-     Boolean AM = false;
-
-     if (hour == 0) {
-     AM = true;
-     hours = "12";
-
-     } else if (hour >= 1 && hour <= 11) {
-     hours = String.valueOf(hour);
-     AM = true;
-
-     } else if (hour == 12) {
-     hours = String.valueOf(hour);
-     AM = false;
-
-     } else if (hour > 12) {
-     hours = String.valueOf(hour - 12);
-     }
-
-     if (min < 10) {
-     mins = "0" + min;
-     } else {
-     mins = String.valueOf(min);
-     }
-
-     if (AM) {
-     return hours + ":" + mins + " AM";
-     } else {
-     return hours + ":" + mins + " PM";
-     }
-     }**/
 }
 
