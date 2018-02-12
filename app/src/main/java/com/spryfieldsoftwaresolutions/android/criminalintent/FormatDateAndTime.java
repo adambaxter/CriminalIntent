@@ -19,6 +19,12 @@ public class FormatDateAndTime {
 
     }
 
+    public static String dateToMilli(Date date) {
+        SimpleDateFormat sdf = new SimpleDateFormat("S", Locale.CANADA);
+
+        return sdf.format(date);
+    }
+
     public static String formatTime(Date date) {
         SimpleDateFormat sdf = new SimpleDateFormat("h:mm a", Locale.CANADA);
 
