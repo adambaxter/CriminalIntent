@@ -20,6 +20,7 @@ import java.util.UUID;
 
 /**
  * Created by slim on 02/02/18.
+ * Class that handles all crimes, and storing/retrieving crimes from the database.
  */
 
 public class CrimeLab {
