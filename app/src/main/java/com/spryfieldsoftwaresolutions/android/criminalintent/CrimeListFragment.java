@@ -29,6 +29,7 @@ public class CrimeListFragment extends Fragment {
     private CrimeAdapter mAdapter;
     private boolean mSubtitleVisible;
     private Button mEmptyCrimeListButton;
+    private TextView mEmptyCrimeListTextView;
 
     //private ArrayList<Integer> mLastPositionUpdated = new ArrayList<>();
 
@@ -49,7 +50,10 @@ public class CrimeListFragment extends Fragment {
         mCrimeRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         mEmptyCrimeListButton = view.findViewById(R.id.empty_crime_list_add_crime_button);
-        mEmptyCrimeListButton.setVisibility(View.GONE);
+        mEmptyCrimeListTextView = view.findViewById(R.id.empty_crime_list_text);
+
+        setVisibility();
+
         mEmptyCrimeListButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -134,11 +138,7 @@ public class CrimeListFragment extends Fragment {
         CrimeLab crimeLab = CrimeLab.get(getActivity());
         List<Crime> crimes = crimeLab.getCrimes();
 
-        if (crimes.size() == 0) {
-            mEmptyCrimeListButton.setVisibility(View.VISIBLE);
-        } else {
-            mEmptyCrimeListButton.setVisibility(View.GONE);
-        }
+        setVisibility();
 
         if (mAdapter == null) {
             mAdapter = new CrimeAdapter(crimes);
@@ -271,4 +271,14 @@ public class CrimeListFragment extends Fragment {
         }
     }
 
+    public void setVisibility() {
+        CrimeLab crimeLab = CrimeLab.get(getActivity());
+        if (crimeLab.numberOfCrimes() == 0) {
+            mEmptyCrimeListButton.setVisibility(View.VISIBLE);
+            mEmptyCrimeListTextView.setVisibility(View.VISIBLE);
+        } else {
+            mEmptyCrimeListButton.setVisibility(View.GONE);
+            mEmptyCrimeListTextView.setVisibility(View.GONE);
+        }
+    }
 }
