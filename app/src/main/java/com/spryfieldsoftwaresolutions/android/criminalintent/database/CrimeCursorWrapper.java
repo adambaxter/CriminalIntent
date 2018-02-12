@@ -4,6 +4,7 @@ import android.database.Cursor;
 import android.database.CursorWrapper;
 
 import com.spryfieldsoftwaresolutions.android.criminalintent.Crime;
+import com.spryfieldsoftwaresolutions.android.criminalintent.FormatDateAndTime;
 import com.spryfieldsoftwaresolutions.android.criminalintent.database.CrimeDbSchema.CrimeTable;
 
 import java.util.Date;
@@ -25,11 +26,14 @@ public class CrimeCursorWrapper extends CursorWrapper {
         String time = getString(getColumnIndex(CrimeTable.Cols.TIME));
         int isSolved = getInt(getColumnIndex(CrimeTable.Cols.SOLVED));
 
+        Date rawDate = new Date(date);
         Crime crime = new Crime(UUID.fromString(uuidString));
         crime.setTitle(title);
-        crime.setDate(new Date(date));
+        crime.setDate(rawDate);
+        crime.setTime(rawDate);
+        crime.setSolved(isSolved != 0);
 
-        return null;
+        return crime;
 
     }
 }
