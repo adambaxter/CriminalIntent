@@ -13,19 +13,23 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_margin="8dp">
 
         <TextView
             android:id="@+id/empty_crime_list_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/empty_crime_list_text_view" />
+            android:text="@string/empty_crime_list_text_view"
+            android:textSize="20dp"
+            android:layout_margin="8dp" />
 
         <Button
             android:id="@+id/empty_crime_list_add_crime_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/empty_crime_list_add_crime_button" />
+            android:text="@string/empty_crime_list_add_crime_button"
+            android:layout_gravity="center_horizontal" />
 
     </LinearLayout>
 </FrameLayout>
