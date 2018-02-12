@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.spryfieldsoftwaresolutions.android.criminalintent.database.CrimeBaseHelper;
 import com.spryfieldsoftwaresolutions.android.criminalintent.database.CrimeCursorWrapper;
@@ -123,7 +124,7 @@ public class CrimeLab {
         ContentValues values = new ContentValues();
         values.put(CrimeTable.Cols.UUID, crime.getId().toString());
         values.put(CrimeTable.Cols.TITLE, crime.getTitle());
-        values.put(CrimeTable.Cols.DATE, crime.getDate());
+        values.put(CrimeTable.Cols.DATE, crime.getUnformattedDate().getTime());
         values.put(CrimeTable.Cols.TIME, crime.getTime());
         values.put(CrimeTable.Cols.SOLVED, crime.isSolved() ? 1 : 0);
 

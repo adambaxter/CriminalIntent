@@ -5,7 +5,6 @@ import android.database.CursorWrapper;
 import android.util.Log;
 
 import com.spryfieldsoftwaresolutions.android.criminalintent.Crime;
-import com.spryfieldsoftwaresolutions.android.criminalintent.FormatDateAndTime;
 import com.spryfieldsoftwaresolutions.android.criminalintent.database.CrimeDbSchema.CrimeTable;
 
 import java.util.Date;
@@ -13,6 +12,7 @@ import java.util.UUID;
 
 /**
  * Created by slim on 12/02/18.
+ * A wrapper to retrieve crime data from the database, and turn it into a crime object.
  */
 
 public class CrimeCursorWrapper extends CursorWrapper {
@@ -23,16 +23,15 @@ public class CrimeCursorWrapper extends CursorWrapper {
     public Crime getCrime() {
         String uuidString = getString(getColumnIndex(CrimeTable.Cols.UUID));
         String title = getString(getColumnIndex(CrimeTable.Cols.TITLE));
-        String date = getString(getColumnIndex(CrimeTable.Cols.DATE));
+        long date = getLong(getColumnIndex(CrimeTable.Cols.DATE));
         String time = getString(getColumnIndex(CrimeTable.Cols.TIME));
         int isSolved = getInt(getColumnIndex(CrimeTable.Cols.SOLVED));
 
-        Log.d("DB set date ------> ", "" + date);
+        Log.d("Get Date", "Long Date: " + date);
 
-        Date rawDate = new Date();
         Crime crime = new Crime(UUID.fromString(uuidString));
-        crime.setTitle(title);  /** figure this out**/
-        crime.setDate(date);
+        crime.setTitle(title);
+        crime.setDate(new Date(date));
         crime.setTime(time);
         crime.setSolved(isSolved != 0);
 
