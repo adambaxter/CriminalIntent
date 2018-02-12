@@ -3,6 +3,7 @@
 
     <!-- Crime List Fragment -->
     <string name="empty_crime_list_add_crime_button">Add Crime</string>
+    <string name="empty_crime_list_text_view">There are currently no crimes recorded. Press the add crime button below to enter a crime.</string>
 
     <!-- Crime Fragment Strings -->
     <string name="crime_title_hint">Enter a title for the crime.</string>
