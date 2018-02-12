@@ -2,6 +2,7 @@ package com.spryfieldsoftwaresolutions.android.criminalintent;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.spryfieldsoftwaresolutions.android.criminalintent.database.CrimeBaseHelper;
@@ -63,6 +64,19 @@ public class CrimeLab {
         mDatabase.update(CrimeTable.NAME, values,
                 CrimeTable.Cols.UUID + " = ?",
                 new String[]{uuidString});
+    }
+
+    private Cursor queryCrimes(String whereClause, String[] whereArgs) {
+        Cursor cursor = mDatabase.query(
+                CrimeTable.NAME,
+                null,  //colums - null selects all columns
+                whereClause,
+                whereArgs,
+                null, //groupBy
+                null, //having
+                null //orderBy
+        );
+        return cursor;
     }
 
     public void removeCrime(UUID id) {
