@@ -1,7 +1,6 @@
 package com.spryfieldsoftwaresolutions.android.criminalintent;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -21,8 +20,6 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.Toast;
-
 import java.util.Date;
 import java.util.UUID;
 
@@ -30,6 +27,8 @@ import static android.widget.CompoundButton.*;
 
 /**
  * Created by slim on 02/02/18.
+ *
+ * Fragment that allows a user to create a crime.
  */
 
 public class CrimeFragment extends Fragment {
@@ -38,8 +37,6 @@ public class CrimeFragment extends Fragment {
     private Button mDateButton;
     private Button mTimeButton;
     private CheckBox mSolvedCheckBox;
-    private Button mDeleteCrimeButton;
-
 
     private static final String ARG_CRIME_ID = "crime_id";
     private static final String DIALOG_DATE = "DialogDate";
