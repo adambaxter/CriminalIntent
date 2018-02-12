@@ -11,7 +11,8 @@ import java.util.Date;
 import java.util.UUID;
 
 /**
- * Created by slim on 12/02/18.
+ * Created by Adam Baxter on 12/02/18.
+ *
  * A wrapper to retrieve crime data from the database, and turn it into a crime object.
  */
 

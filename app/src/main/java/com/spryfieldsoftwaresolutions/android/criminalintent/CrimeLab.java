@@ -19,7 +19,8 @@ import java.util.Map;
 import java.util.UUID;
 
 /**
- * Created by slim on 02/02/18.
+ * Created by Adam Baxter on 02/02/18.
+ *
  * Class that handles all crimes, and storing/retrieving crimes from the database.
  */
 

@@ -8,7 +8,9 @@ import com.spryfieldsoftwaresolutions.android.criminalintent.Crime;
 import com.spryfieldsoftwaresolutions.android.criminalintent.database.CrimeDbSchema.CrimeTable;
 
 /**
- * Created by slim on 11/02/18.
+ * Created by Adam Baxter on 11/02/18.
+ *
+ * Helper class that sets up the Database.
  */
 
 public class CrimeBaseHelper extends SQLiteOpenHelper {

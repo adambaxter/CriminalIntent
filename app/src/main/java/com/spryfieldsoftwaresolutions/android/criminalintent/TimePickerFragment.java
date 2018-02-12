@@ -15,7 +15,7 @@ import android.widget.TimePicker;
 import java.lang.reflect.Array;
 
 /**
- * Created by slim on 07/02/18.
+ * Created by Adam Baxter on 07/02/18.
  * <p>
  * A fragment that allows the user to pick the time of day that a crime took place.
  */

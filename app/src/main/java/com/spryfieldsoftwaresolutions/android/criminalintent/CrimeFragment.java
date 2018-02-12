@@ -26,7 +26,7 @@ import java.util.UUID;
 import static android.widget.CompoundButton.*;
 
 /**
- * Created by slim on 02/02/18.
+ * Created by Adam Baxter on 02/02/18.
  *
  * Fragment that allows a user to create a crime.
  */

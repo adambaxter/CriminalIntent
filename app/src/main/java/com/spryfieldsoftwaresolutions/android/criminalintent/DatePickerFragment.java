@@ -16,7 +16,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 /**
- * Created by slim on 07/02/18.
+ * Created by Adam Baxter on 07/02/18.
  * <p>
  * Fragment that allows the user to selected the date that a crime was committed.
  */

@@ -6,7 +6,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 
 /**
- * Created by slim on 02/02/18.
+ * Created by Adam Baxter on 02/02/18.
+ *
  * Abstract Activity to use for fragments
  */
 

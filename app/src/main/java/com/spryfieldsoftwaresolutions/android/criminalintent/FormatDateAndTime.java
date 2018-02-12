@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.Locale;
 
 /**
- * Created by slim on 12/02/18.
+ * Created by Adam Baxter on 12/02/18.
  * <p>
  * Class to handle formatting dates and times.
  */

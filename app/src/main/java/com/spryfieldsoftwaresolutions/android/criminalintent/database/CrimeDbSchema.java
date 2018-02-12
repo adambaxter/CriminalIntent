@@ -1,7 +1,8 @@
 package com.spryfieldsoftwaresolutions.android.criminalintent.database;
 
 /**
- * Created by slim on 11/02/18.
+ * Created by Adam Baxter on 11/02/18.
+ *
  * Database Schema
  */
 

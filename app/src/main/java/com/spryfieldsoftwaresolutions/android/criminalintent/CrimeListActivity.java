@@ -3,8 +3,8 @@ package com.spryfieldsoftwaresolutions.android.criminalintent;
 import android.support.v4.app.Fragment;
 
 /**
- * Created by slim on 02/02/18.
- * <p>
+ * Created by Adam Baxter on 02/02/18.
+ *
  * Creates an activity to host a Crime List Fragment
  */
 

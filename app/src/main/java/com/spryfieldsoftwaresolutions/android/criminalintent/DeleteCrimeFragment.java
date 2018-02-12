@@ -9,7 +9,9 @@ import android.support.v7.app.AlertDialog;
 import java.util.UUID;
 
 /**
- * Created by slim on 10/02/18.
+ * Created by Adam Baxter on 10/02/18.
+ *
+ * Fragment that handles deleting crimes from the database.
  */
 
 public class DeleteCrimeFragment extends DialogFragment {

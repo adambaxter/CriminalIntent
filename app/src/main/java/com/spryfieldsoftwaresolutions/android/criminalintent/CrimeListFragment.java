@@ -20,7 +20,9 @@ import android.widget.TextView;
 import java.util.List;
 
 /**
- * Created by slim on 02/02/18.
+ * Created by Adam Baxter on 02/02/18.
+ *
+ * Fragment that handles showing all the crimes in a list view.
  */
 
 public class CrimeListFragment extends Fragment {
