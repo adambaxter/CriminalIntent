@@ -3,6 +3,7 @@ package com.spryfieldsoftwaresolutions.android.criminalintent;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.spryfieldsoftwaresolutions.android.criminalintent.database.CrimeBaseHelper;
@@ -112,9 +113,10 @@ public class CrimeLab {
         //mCrimes.remove(id);
     }
 
-    public int numberOfCrimes() {
+    public long numberOfCrimes() {
         //return mCrimes.size();
-        return 0;
+        long count = DatabaseUtils.queryNumEntries(mDatabase, CrimeTable.NAME);
+        return count;
     }
 
     private static ContentValues getContentValues(Crime crime) {
