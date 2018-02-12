@@ -1,6 +1,8 @@
 package com.spryfieldsoftwaresolutions.android.criminalintent;
 
 
+import android.util.Log;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -32,6 +34,7 @@ public class Crime {
     public Crime(UUID id) {
         mId = id;
         mDate = new Date();
+        Log.d("SETDATE", "Date: " + mDate);
     }
 
     public UUID getId() {
@@ -56,9 +59,10 @@ public class Crime {
 
     public void setDate(Date date) {
         mDate = date;
+        Log.d("SETDATE 1", "Date: " + mDate);
     }
 
-    public void setTime() {
+    public void setTime() {  /***** GETTING SET AS DEC 31, 1969 ***/
         Date date = new Date();
         setTime(date);
     }
