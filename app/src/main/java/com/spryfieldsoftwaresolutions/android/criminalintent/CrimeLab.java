@@ -44,4 +44,7 @@ public class CrimeLab {
         mCrimes.remove(id);
     }
 
+    public int size() {
+        return mCrimes.size();
+    }
 }
