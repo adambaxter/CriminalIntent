@@ -62,6 +62,7 @@ public class Crime {
         Log.d("SETDATE 1", "Date: " + mDate);
     }
 
+
     public void setTime() {  /***** GETTING SET AS DEC 31, 1969 ***/
         Date date = new Date();
         setTime(date);
@@ -74,6 +75,10 @@ public class Crime {
         setHours(FormatDateAndTime.formatTimeHour(date));
         setMins(FormatDateAndTime.formatTimeMins(date));
 
+    }
+
+    public void setTime(String time) {
+        mTime = time;
     }
 
     public void setTimeFromInts(int hour, int min) {

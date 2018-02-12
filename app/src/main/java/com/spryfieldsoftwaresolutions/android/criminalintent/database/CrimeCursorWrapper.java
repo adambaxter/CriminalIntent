@@ -2,6 +2,7 @@ package com.spryfieldsoftwaresolutions.android.criminalintent.database;
 
 import android.database.Cursor;
 import android.database.CursorWrapper;
+import android.util.Log;
 
 import com.spryfieldsoftwaresolutions.android.criminalintent.Crime;
 import com.spryfieldsoftwaresolutions.android.criminalintent.FormatDateAndTime;
@@ -22,15 +23,17 @@ public class CrimeCursorWrapper extends CursorWrapper {
     public Crime getCrime() {
         String uuidString = getString(getColumnIndex(CrimeTable.Cols.UUID));
         String title = getString(getColumnIndex(CrimeTable.Cols.TITLE));
-        long date = getLong(getColumnIndex(CrimeTable.Cols.DATE));
+        String date = getString(getColumnIndex(CrimeTable.Cols.DATE));
         String time = getString(getColumnIndex(CrimeTable.Cols.TIME));
         int isSolved = getInt(getColumnIndex(CrimeTable.Cols.SOLVED));
 
-        Date rawDate = new Date(date);
+        Log.d("DB set date ------> ", "" + date);
+
+        Date rawDate = new Date();
         Crime crime = new Crime(UUID.fromString(uuidString));
-        crime.setTitle(title);
-        crime.setDate(rawDate);
-        crime.setTime(rawDate);
+        crime.setTitle(title);  /** figure this out**/
+        crime.setDate(date);
+        crime.setTime(time);
         crime.setSolved(isSolved != 0);
 
         return crime;
