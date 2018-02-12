@@ -8,7 +8,7 @@ import java.util.UUID;
 
 /**
  * Created by slim on 02/02/18.
- *
+ * <p>
  * Crime Object that holds all information about a crime.
  */
 
@@ -47,22 +47,33 @@ public class Crime {
     }
 
     public String getDate() {
-        return formatDate(mDate);
+        return FormatDateAndTime.formatDate(mDate);
     }
 
     public Date getUnformattedDate() {
         return mDate;
     }
+
     public void setDate(Date date) {
         mDate = date;
     }
 
     public void setTime() {
-        mTime = formatTime(new Date());
+        Date date = new Date();
+        setTime(date);
+    }
+
+    public void setTime(Date date) {
+
+        mTime = FormatDateAndTime.formatTime(date);
+
+        setHours(FormatDateAndTime.formatTimeHour(date));
+        setMins(FormatDateAndTime.formatTimeMins(date));
+
     }
 
     public void setTimeFromInts(int hour, int min) {
-        mTime = convertTime(hour, min);
+        mTime = FormatDateAndTime.convertTime(hour, min);
     }
 
     public String getTime() {
@@ -101,56 +112,56 @@ public class Crime {
         mRequiresPolice = requiresPolice;
     }
 
-    private String formatDate(Date date) {
-        SimpleDateFormat sdf = new SimpleDateFormat("EEEE, MMM d, yyyy", Locale.CANADA);
+    /**   private String formatDate(Date date) {
+     SimpleDateFormat sdf = new SimpleDateFormat("EEEE, MMM d, yyyy", Locale.CANADA);
 
-        return sdf.format(date);
+     return sdf.format(date);
 
-    }
+     }
 
-    private String formatTime(Date date) {
-        SimpleDateFormat sdf = new SimpleDateFormat("h:mm a", Locale.CANADA);
-        SimpleDateFormat hour = new SimpleDateFormat("h", Locale.CANADA);
-        SimpleDateFormat min = new SimpleDateFormat("mm", Locale.CANADA);
+     private String formatTime(Date date) {
+     SimpleDateFormat sdf = new SimpleDateFormat("h:mm a", Locale.CANADA);
+     SimpleDateFormat hour = new SimpleDateFormat("h", Locale.CANADA);
+     SimpleDateFormat min = new SimpleDateFormat("mm", Locale.CANADA);
 
-        setHours(Integer.parseInt(hour.format(date)));
-        setMins(Integer.parseInt(min.format(date)));
+     setHours(Integer.parseInt(hour.format(date)));
+     setMins(Integer.parseInt(min.format(date)));
 
-        return sdf.format(date);
-    }
+     return sdf.format(date);
+     }
 
-    public String convertTime(int hour, int min) {
-        String hours = "";
-        String mins = "";
-        Boolean AM = false;
+     public String convertTime(int hour, int min) {
+     String hours = "";
+     String mins = "";
+     Boolean AM = false;
 
-        if (hour == 0) {
-            AM = true;
-            hours = "12";
+     if (hour == 0) {
+     AM = true;
+     hours = "12";
 
-        } else if (hour >= 1 && hour <= 11) {
-            hours = String.valueOf(hour);
-            AM = true;
+     } else if (hour >= 1 && hour <= 11) {
+     hours = String.valueOf(hour);
+     AM = true;
 
-        } else if (hour == 12) {
-            hours = String.valueOf(hour);
-            AM = false;
+     } else if (hour == 12) {
+     hours = String.valueOf(hour);
+     AM = false;
 
-        } else if (hour > 12) {
-            hours = String.valueOf(hour - 12);
-        }
+     } else if (hour > 12) {
+     hours = String.valueOf(hour - 12);
+     }
 
-        if (min < 10) {
-            mins = "0" + min;
-        } else {
-            mins = String.valueOf(min);
-        }
+     if (min < 10) {
+     mins = "0" + min;
+     } else {
+     mins = String.valueOf(min);
+     }
 
-        if (AM) {
-            return hours + ":" + mins + " AM";
-        } else {
-            return hours + ":" + mins + " PM";
-        }
-    }
+     if (AM) {
+     return hours + ":" + mins + " AM";
+     } else {
+     return hours + ":" + mins + " PM";
+     }
+     }**/
 }
 
