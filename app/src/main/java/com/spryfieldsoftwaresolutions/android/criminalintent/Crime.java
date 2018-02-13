@@ -22,7 +22,9 @@ public class Crime {
     private String mTime;
     private int mHours;
     private int mMins;
+
     private boolean mSolved;
+    private String mSuspect;
     private boolean mRequiresPolice;
 
 
@@ -34,7 +36,6 @@ public class Crime {
     public Crime(UUID id) {
         mId = id;
         mDate = new Date();
-        Log.d("SETDATE", "Date: " + mDate);
     }
 
     public UUID getId() {
@@ -119,5 +120,12 @@ public class Crime {
         mRequiresPolice = requiresPolice;
     }
 
+    public String getSuspect() {
+        return mSuspect;
+    }
+
+    public void setSuspect(String suspect) {
+        mSuspect = suspect;
+    }
 }
 
