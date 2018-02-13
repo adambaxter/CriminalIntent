@@ -27,7 +27,6 @@ import java.util.UUID;
 public class CrimeLab {
     private static CrimeLab sCrimeLab;
 
-    //private Map<UUID, Crime> mCrimes;
     private Context mContext;
     private SQLiteDatabase mDatabase;
 
@@ -42,18 +41,15 @@ public class CrimeLab {
         mContext = context.getApplicationContext();
         mDatabase = new CrimeBaseHelper(mContext)
                 .getWritableDatabase();
-        //  mCrimes = new LinkedHashMap<>();
     }
 
     public void addCrime(Crime c) {
-        //mCrimes.put(c.getId(), c);
         ContentValues values = getContentValues(c);
 
         mDatabase.insert(CrimeTable.NAME, null, values);
     }
 
     public List<Crime> getCrimes(){
-        //return new ArrayList<>(mCrimes.values());
         List<Crime> crimes = new ArrayList<>();
 
         CrimeCursorWrapper cursor = queryCrimes(null, null);
@@ -72,7 +68,6 @@ public class CrimeLab {
     }
 
     public Crime getCrime(UUID id){
-        //return mCrimes.get(id);
         CrimeCursorWrapper cursor = queryCrimes(
                 CrimeTable.Cols.UUID + " = ?",
                 new String[]{id.toString()}
@@ -102,7 +97,7 @@ public class CrimeLab {
     private CrimeCursorWrapper queryCrimes(String whereClause, String[] whereArgs) {
         Cursor cursor = mDatabase.query(
                 CrimeTable.NAME,
-                null,  //colums - null selects all columns
+                null,  //columns - null selects all columns
                 whereClause,
                 whereArgs,
                 null, //groupBy
@@ -113,11 +108,12 @@ public class CrimeLab {
     }
 
     public void removeCrime(UUID id) {
-        //mCrimes.remove(id);
+        mDatabase.delete(CrimeTable.NAME,
+                CrimeTable.Cols.UUID + " = ?",
+                new String[]{id.toString()});
     }
 
     public long numberOfCrimes() {
-        //return mCrimes.size();
         long count = DatabaseUtils.queryNumEntries(mDatabase, CrimeTable.NAME);
         return count;
     }
