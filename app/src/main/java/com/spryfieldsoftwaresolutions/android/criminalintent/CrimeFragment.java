@@ -46,6 +46,8 @@ public class CrimeFragment extends Fragment {
     private CheckBox mSolvedCheckBox;
     private Button mReportButton;
     private Button mSuspectButton;
+    private Button mCallSuspectButton;
+    private String mPhoneNumber;
 
     private static final String ARG_CRIME_ID = "crime_id";
     private static final String DIALOG_DATE = "DialogDate";
@@ -139,7 +141,8 @@ public class CrimeFragment extends Fragment {
         });
 
         final Intent pickContact = new Intent(Intent.ACTION_PICK,
-                ContactsContract.Contacts.CONTENT_URI);
+                ContactsContract.Contacts.CONTENT_URI)
+                .setType(ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE);
 
         mSuspectButton = v.findViewById(R.id.crime_suspect);
         mSuspectButton.setOnClickListener(new View.OnClickListener() {
@@ -157,6 +160,25 @@ public class CrimeFragment extends Fragment {
                 PackageManager.MATCH_DEFAULT_ONLY) == null) {
             mSuspectButton.setEnabled(false);
         }
+
+//        final Intent getPhoneNumber = new Intent(Intent.ACTION_PICK,
+        //              ContactsContract.CommonDataKinds.Phone.CONTENT_URI);
+
+        mCallSuspectButton = v.findViewById(R.id.call_suspect);
+        if (mSuspectButton.getText() == getString(R.string.crime_suspect_text)) {
+            mCallSuspectButton.setEnabled(false);
+        }
+
+        mCallSuspectButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Uri number = Uri.parse("tel:" + mPhoneNumber);
+                Intent dialNumber = new Intent(Intent.ACTION_DIAL);
+                dialNumber.setData(number);
+                dialNumber = Intent.createChooser(dialNumber, getString(R.string.dial_number));
+                startActivity(dialNumber);
+            }
+        });
+
 
         mReportButton = v.findViewById(R.id.crime_report);
         mReportButton.setOnClickListener(new View.OnClickListener() {
@@ -207,7 +229,11 @@ public class CrimeFragment extends Fragment {
              * values for
              **/
             String[] queryFields = new String[]{
-                    ContactsContract.Contacts.DISPLAY_NAME
+                    ContactsContract.Contacts._ID,
+                    ContactsContract.Contacts.DISPLAY_NAME,
+                    ContactsContract.CommonDataKinds.Phone.NUMBER
+                    // ContactsContract.Contacts.LOOKUP_KEY,
+
             };
             /**
              * Perform your query - the contactUri is like a "where"
@@ -223,13 +249,15 @@ public class CrimeFragment extends Fragment {
                 }
 
                 /**
-                 * Pull out th first column of the first row of data -
-                 * that is your suspects name
+                 * Pull out the DISPLAY_NAME and NUMBER from the first row of data
                  **/
                 c.moveToFirst();
-                String suspect = c.getString(0);
+                String suspect = c.getString(c.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
+                mPhoneNumber = c.getString(c.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
+
                 mCrime.setSuspect(suspect);
                 mSuspectButton.setText(suspect);
+                mCallSuspectButton.setEnabled(true);
             } finally {
                 c.close();
             }
@@ -274,7 +302,6 @@ public class CrimeFragment extends Fragment {
         String dateFormat = "EEE, MMM dd";
         String dateString = DateFormat.format(dateFormat,
                 mCrime.getUnformattedDate()).toString();
-        Log.e("DATE STRING", "dateString: " + dateString);
 
         String suspect = mCrime.getSuspect();
         if (suspect == null) {
