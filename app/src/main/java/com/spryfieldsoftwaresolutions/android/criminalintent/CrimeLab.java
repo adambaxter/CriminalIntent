@@ -12,6 +12,7 @@ import com.spryfieldsoftwaresolutions.android.criminalintent.database.CrimeCurso
 import com.spryfieldsoftwaresolutions.android.criminalintent.database.CrimeDbSchema;
 import com.spryfieldsoftwaresolutions.android.criminalintent.database.CrimeDbSchema.CrimeTable;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -116,6 +117,11 @@ public class CrimeLab {
     public long numberOfCrimes() {
         long count = DatabaseUtils.queryNumEntries(mDatabase, CrimeTable.NAME);
         return count;
+    }
+
+    public File getPhotoFile(Crime crime) {
+        File filesDir = mContext.getFilesDir();
+        return new File(filesDir, crime.getPhotoFilename());
     }
 
     private static ContentValues getContentValues(Crime crime) {
