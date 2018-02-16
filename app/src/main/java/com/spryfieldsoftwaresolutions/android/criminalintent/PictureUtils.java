@@ -27,14 +27,7 @@ public class PictureUtils {
 
         // Figure out by how much to scale down
         int inSampleSize;
-        /**    if (srcHeight > destHeight || srcWidth > destHeight) {
-         float heightScale = srcHeight / destHeight;
-         float widthScale = srcWidth / destHeight;
 
-         inSampleSize = Math.round(heightScale > widthScale ? heightScale :
-         widthScale);
-
-         }**/
         if (srcHeight < srcWidth) {
 
             inSampleSize = Math.round(srcWidth / destWidth);
@@ -48,7 +41,12 @@ public class PictureUtils {
         options.inSampleSize = inSampleSize;
 
         // Read in anc create final bitmap
-        return BitmapFactory.decodeFile(path, options);
+        try {
+            return rotateImage(BitmapFactory.decodeFile(path, options), path);
+        } catch (IOException ie) {
+            ie.printStackTrace();
+            return BitmapFactory.decodeFile(path, options);
+        }
     }
 
     public static Bitmap getScaledBitmap(String path, Activity activity) {

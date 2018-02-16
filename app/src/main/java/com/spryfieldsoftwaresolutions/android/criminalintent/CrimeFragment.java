@@ -26,6 +26,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -109,16 +110,26 @@ public class CrimeFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_crime, container, false);
 
         mPhotoView = v.findViewById(R.id.crime_photo);
-
-        mPhotoView.post(new Runnable() {
+        mPhotoView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
-            public void run() {
-                mPhotoviewWidth = mPhotoView.getWidth();
-                mPhotoviewHeight = mPhotoView.getHeight();
+            public void onGlobalLayout() {
+                updatePhotoView();
+                //mPhotoviewHeight = mPhotoView.getHeight();
+                //mPhotoviewWidth = mPhotoView.getWidth();
                 Log.e("RUNN DIMENSIONS", "mPhotoWidth: " + mPhotoView.getWidth() + "\nmPhotoView: " + mPhotoView.getHeight());
+                mPhotoView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
 
             }
         });
+        /** mPhotoView.post(new Runnable() {
+            @Override
+            public void run() {
+        updatePhotoView();
+                Log.e("RUNN DIMENSIONS", "mPhotoWidth: " + mPhotoView.getWidth() + "\nmPhotoView: " + mPhotoView.getHeight());
+
+            }
+        });**/
+
         updatePhotoView();
         mPhotoView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -397,16 +408,20 @@ public class CrimeFragment extends Fragment {
     }
 
     private void updatePhotoView() {
+
+
         if (mPhotoFile == null || !mPhotoFile.exists()) {
             mPhotoView.setImageDrawable(null);
+            mPhotoView.setClickable(false);
         } else {
 
             //Bitmap bitmap = PictureUtils.getScaledBitmap(mPhotoFile.getPath(),
             //  getActivity());
             Bitmap bitmap = PictureUtils.getScaledBitmap(mPhotoFile.getPath(),
-                    mPhotoviewWidth, mPhotoviewHeight);
-            Log.e("IMG DIMENSIONS", "mPhotoWidth: " + mPhotoviewWidth + "\nmPhotoView: " + mPhotoviewHeight);
+                    mPhotoView.getWidth(), mPhotoView.getHeight());
+            Log.e("IMG DIMENSIONS", "mPhotoWidth W : " + mPhotoView.getWidth() + "\nmPhotoView H : " + mPhotoView.getHeight());
             mPhotoView.setImageBitmap(bitmap);
+            mPhotoView.setClickable(true);
 
         }
     }
