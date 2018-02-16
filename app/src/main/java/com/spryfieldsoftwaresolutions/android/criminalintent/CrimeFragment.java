@@ -63,9 +63,6 @@ public class CrimeFragment extends Fragment {
     private String mPhoneNumber;
     private CheckBox mSolvedCheckBox;
     private Button mReportButton;
-    private int mPhotoviewHeight;
-    private int mPhotoviewWidth;
-
 
     private static final String ARG_CRIME_ID = "crime_id";
     private static final String DIALOG_DATE = "DialogDate";
@@ -114,21 +111,11 @@ public class CrimeFragment extends Fragment {
             @Override
             public void onGlobalLayout() {
                 updatePhotoView();
-                //mPhotoviewHeight = mPhotoView.getHeight();
-                //mPhotoviewWidth = mPhotoView.getWidth();
-                Log.e("RUNN DIMENSIONS", "mPhotoWidth: " + mPhotoView.getWidth() + "\nmPhotoView: " + mPhotoView.getHeight());
+                // Log.e("RUNN DIMENSIONS", "mPhotoWidth: " + mPhotoView.getWidth() + "\nmPhotoView: " + mPhotoView.getHeight());
                 mPhotoView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
 
             }
         });
-        /** mPhotoView.post(new Runnable() {
-            @Override
-            public void run() {
-        updatePhotoView();
-                Log.e("RUNN DIMENSIONS", "mPhotoWidth: " + mPhotoView.getWidth() + "\nmPhotoView: " + mPhotoView.getHeight());
-
-            }
-        });**/
 
         updatePhotoView();
         mPhotoView.setOnClickListener(new View.OnClickListener() {
@@ -419,7 +406,7 @@ public class CrimeFragment extends Fragment {
             //  getActivity());
             Bitmap bitmap = PictureUtils.getScaledBitmap(mPhotoFile.getPath(),
                     mPhotoView.getWidth(), mPhotoView.getHeight());
-            Log.e("IMG DIMENSIONS", "mPhotoWidth W : " + mPhotoView.getWidth() + "\nmPhotoView H : " + mPhotoView.getHeight());
+            //    Log.e("IMG DIMENSIONS", "mPhotoWidth W : " + mPhotoView.getWidth() + "\nmPhotoView H : " + mPhotoView.getHeight());
             mPhotoView.setImageBitmap(bitmap);
             mPhotoView.setClickable(true);
 

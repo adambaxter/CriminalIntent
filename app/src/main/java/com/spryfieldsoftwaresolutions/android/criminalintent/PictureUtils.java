@@ -35,8 +35,8 @@ public class PictureUtils {
             inSampleSize = Math.round(srcHeight / destHeight);
         }
 
-        Log.e("SCALED IMAGE SIZE", "Sample size:" + inSampleSize + "\nsrcHeight: " + srcHeight + "\nsrcWidth: " + srcWidth + "\ndestHeight: " + destHeight +
-                "\ndestWidth: " + destWidth);
+        // Log.e("SCALED IMAGE SIZE", "Sample size:" + inSampleSize + "\nsrcHeight: " + srcHeight + "\nsrcWidth: " + srcWidth + "\ndestHeight: " + destHeight +
+        //       "\ndestWidth: " + destWidth);
         options = new BitmapFactory.Options();
         options.inSampleSize = inSampleSize;
 
