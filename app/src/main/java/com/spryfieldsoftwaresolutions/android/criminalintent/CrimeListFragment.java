@@ -1,5 +1,6 @@
 package com.spryfieldsoftwaresolutions.android.criminalintent;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -31,10 +32,24 @@ public class CrimeListFragment extends Fragment {
     private boolean mSubtitleVisible;
     private Button mEmptyCrimeListButton;
     private TextView mEmptyCrimeListTextView;
+    private Callbacks mCallbacks;
 
     //private ArrayList<Integer> mLastPositionUpdated = new ArrayList<>();
 
     private static final String SAVED_SUBTITLE_VISIBLE = "subtitle";
+
+    /**
+     * Required interface for hosting activities
+     */
+    public interface Callbacks {
+        void onCrimeSelected(Crime crime);
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mCallbacks = (Callbacks) context;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -86,6 +101,12 @@ public class CrimeListFragment extends Fragment {
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putBoolean(SAVED_SUBTITLE_VISIBLE, mSubtitleVisible);
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mCallbacks = null;
     }
 
     @Override
