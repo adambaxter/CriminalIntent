@@ -1,6 +1,7 @@
 package com.spryfieldsoftwaresolutions.android.criminalintent;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
@@ -63,6 +64,7 @@ public class CrimeFragment extends Fragment {
     private String mPhoneNumber;
     private CheckBox mSolvedCheckBox;
     private Button mReportButton;
+    private Callbacks mCallbacks;
 
     private static final String ARG_CRIME_ID = "crime_id";
     private static final String DIALOG_DATE = "DialogDate";
@@ -75,6 +77,13 @@ public class CrimeFragment extends Fragment {
     private static final int REQUEST_CONTACT = 2;
     private static final int REQUEST_PHOTO = 3;
 
+    /**
+     * Required interface for hosting activities
+     **/
+    public interface Callbacks {
+        void onCrimeUpdated(Crime crime);
+    }
+
     public static CrimeFragment newInstance(UUID crimeId) {
         Bundle args = new Bundle();
         args.putSerializable(ARG_CRIME_ID, crimeId);
@@ -83,6 +92,12 @@ public class CrimeFragment extends Fragment {
         fragment.setArguments(args);
 
         return fragment;
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mCallbacks = (Callbacks) context;
     }
 
     @Override
@@ -100,6 +115,12 @@ public class CrimeFragment extends Fragment {
 
         CrimeLab.get(getActivity())
                 .updateCrime(mCrime);
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mCallbacks = null;
     }
 
     @Override
