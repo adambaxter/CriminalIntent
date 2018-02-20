@@ -205,7 +205,11 @@ public class CrimeListFragment extends Fragment {
 
             @Override
             public void onChildDraw(Canvas c, RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
-/**                Resources res = getResources();
+/**
+ ***************  Weird bug sometimes when swiping an item away removes text from another item. tapping that item brings back text.
+ **************** This implementation looks cleaner, but the one in use doesnt have the bug.
+
+ Resources res = getResources();
 
  if( actionState == ItemTouchHelper.ACTION_STATE_SWIPE) {
  // Get RecyclerView item from the VIewHolder
