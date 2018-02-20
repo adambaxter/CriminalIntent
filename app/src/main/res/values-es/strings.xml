@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">IntentoCriminal</string>
+
+    <!-- Crime List Fragment -->
+    <string name="empty_crime_list_add_crime_button">Add Crime</string>
+    <string name="empty_crime_list_text_view">There are currently no crimes recorded. Press the add crime button below to enter a crime.</string>
+
+    <!-- Crime Fragment Strings -->
+    <string name="crime_title_hint">Introduzca un título para el crimen.</string>
+    <string name="crime_title_label">Título</string>
+    <string name="crime_details_label">Detalles</string>
+    <string name="crime_solved_label">Solucionado</string>
+    <string name="crime_suspect_text">Elegir Sospechoso</string>
+    <string name="call_suspect">Llamar Sospechoso</string>
+    <string name="dial_number">Marque el número via</string>
+    <string name="crime_report_text">Enviar el Informe del Crimen</string>
+    <string name="crime_report">¡%1$s!
+     El crimen fue descubierto el %2$s. %3$s, y %4$s
+    </string>
+    <string name="crime_report_solved">El caso está resuelto</string>
+    <string name="crime_report_unsolved">El caso no está resuelto</string>
+    <string name="crime_report_no_suspect">no hay sospechoso.</string>
+    <string name="crime_report_suspect">el/la sospechoso/a es %s.</string>
+    <string name="crime_report_subject">IntentoCriminal Informe del Crimen</string>
+    <string name="send_report">Enviar el informe del crimen a través de</string>
+
+
+    <!-- Crime Item List Strings -->
+    <string name="crime_list_crime_title">Título del Crimen</string>
+    <string name="crime_list_crime_date">Fecha del Crimen</string>
+    <string name="crime_list_call_police">¡Llama a la Policía!</string>
+    <string name="crime_list_solved_crime_image">¡Resuelto!</string>
+    <string name="crime_list_date_time_string">%1$s a %2$s</string>
+
+    <!-- Activity Crime Pager Strings -->
+    <string name="first_crime_button">Primer Crimen</string>
+    <string name="last_crime_button">Último Crimen</string>
+
+    <!-- Date Picker Dialog Strings -->
+    <string name="date_picker_title">Fecha del crimen:</string>
+
+    <!-- Time Picker Dialog Strings -->
+    <string name="time_picker_title">Hora del Crimen:</string>
+
+    <!-- Menu Strings -->
+    <string name="new_crime">Crimen Nuevo</string>
+    <string name="show_subtitle">Mostrar Subtítulos</string>
+    <string name="hide_subtitle">Esconder Subtítulos</string>
+    <string name="subtitle_format">%1$d</string>
+    <string name="delete_button">Eliminar Crimen</string>
+    <plurals name="subtitle_plural">
+        <item quantity="one">%1$d Crimen</item>
+        <item quantity="other">%1$d Crímenes</item>
+    </plurals>
+
+    <!-- Delete Crime Dialog -->
+    <string name="delete_crime_title">¿Eliminar el crimen?</string>
+    <string name="delete_crime_messsage">El crimen se perderá para siempre. ¿Seguro que quieres eliminarlo?</string>
+    <string name="delete_crime_positive_button">Borrar</string>
+    <string name="delete_crime_negative_button">Cancelar</string>
+
+</resources>
