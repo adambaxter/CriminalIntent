@@ -16,11 +16,10 @@ import java.util.UUID;
 
 /**
  * Created by Adam Baxter on 06/02/18.
- *
- *
  */
 
-public class CrimePagerActivity extends AppCompatActivity {
+public class CrimePagerActivity extends AppCompatActivity
+        implements CrimeFragment.Callbacks, DeleteCrimeFragment.Callbacks {
 
     private static final String EXTRA_CRIME_ID =
             "com.spryfieldsoftwaresolutions.android.criminalintent.crime_id";
@@ -98,5 +97,13 @@ public class CrimePagerActivity extends AppCompatActivity {
                 break;
             }
         }
+    }
+
+    public void onCrimeUpdated(Crime crime) {
+
+    }
+
+    public void onCrimeDeleted(Crime crime) {
+
     }
 }

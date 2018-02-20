@@ -76,12 +76,15 @@ public class CrimeFragment extends Fragment {
     private static final int REQUEST_TIME = 1;
     private static final int REQUEST_CONTACT = 2;
     private static final int REQUEST_PHOTO = 3;
+    private static final int REQUEST_TARGET = 4;
 
     /**
      * Required interface for hosting activities
      **/
     public interface Callbacks {
         void onCrimeUpdated(Crime crime);
+
+        void onCrimeDeleted(Crime crime);
     }
 
     public static CrimeFragment newInstance(UUID crimeId) {
@@ -193,6 +196,7 @@ public class CrimeFragment extends Fragment {
             public void onTextChanged(
                     CharSequence s, int start, int before, int count) {
                 mCrime.setTitle(s.toString());
+                updateCrime();
             }
 
             @Override
@@ -291,6 +295,7 @@ public class CrimeFragment extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView,
                                          boolean isChecked) {
                 mCrime.setSolved(isChecked);
+                updateCrime();
             }
         });
 
@@ -308,10 +313,12 @@ public class CrimeFragment extends Fragment {
             Date date = (Date) data
                     .getSerializableExtra(DatePickerFragment.EXTRA_DATE);
             mCrime.setDate(date);
+            updateCrime();
             updateDate();
         } else if (requestCode == REQUEST_TIME) {
             int[] time = (int[]) data.getSerializableExtra(TimePickerFragment.EXTRA_TIME);
             mCrime.setTimeFromInts(time[0], time[1]);
+            updateCrime();
             mTimeButton.setText(mCrime.getTime());
 
         } else if (requestCode == REQUEST_CONTACT && data != null) {
@@ -347,6 +354,7 @@ public class CrimeFragment extends Fragment {
                 mPhoneNumber = c.getString(c.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
 
                 mCrime.setSuspect(suspect);
+                updateCrime();
                 mSuspectButton.setText(suspect);
                 mCallSuspectButton.setEnabled(true);
             } finally {
@@ -358,6 +366,7 @@ public class CrimeFragment extends Fragment {
                     mPhotoFile);
             getActivity().revokeUriPermission(uri, Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
 
+            updateCrime();
             updatePhotoView();
         }
 
@@ -377,13 +386,20 @@ public class CrimeFragment extends Fragment {
                 FragmentManager manager = getFragmentManager();
                 DeleteCrimeFragment dialog = DeleteCrimeFragment
                         .newInstance(mCrime.getId());
+                dialog.setTargetFragment(this, REQUEST_TARGET);
                 dialog.show(manager, DIALOG_DELETE);
+                //  updateCrime();
+//                mCallbacks.onCrimeDeleted(mCrime);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
 
+    private void updateCrime() {
+        CrimeLab.get(getActivity()).updateCrime(mCrime);
+        mCallbacks.onCrimeUpdated(mCrime);
+    }
     private void updateDate() {
         mDateButton.setText(mCrime.getDate());
     }
